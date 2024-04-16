@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://lekydeni4601"]
+
+[ext_resource type="Script" path="res://Characters/Players/States/Player.gd" id="1_uo1tk"]
+[ext_resource type="Script" path="res://Characters/Players/States/Statemachine.gd" id="2_imo3g"]
+[ext_resource type="Script" path="res://Characters/Players/States/Idle.gd" id="3_gmlyl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i0obu"]
+height = 42.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_uo1tk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_i0obu")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3.67, 3.67)
+
+[node name="Statemachine" type="Node" parent="."]
+script = ExtResource("2_imo3g")
+
+[node name="Idle" type="Node" parent="Statemachine"]
+script = ExtResource("3_gmlyl")
