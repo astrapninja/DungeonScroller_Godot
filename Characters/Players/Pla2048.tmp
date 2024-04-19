@@ -1,11 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://lekydeni4601"]
+[gd_scene load_steps=7 format=3 uid="uid://lekydeni4601"]
 
 [ext_resource type="Script" path="res://Characters/Players/States/Player.gd" id="1_uo1tk"]
 [ext_resource type="Script" path="res://Characters/Players/States/Statemachine.gd" id="2_imo3g"]
-[ext_resource type="Script" path="res://Characters/Players/PlaerCam.gd" id="2_vkips"]
 [ext_resource type="Script" path="res://Characters/Players/States/Idle.gd" id="3_gmlyl"]
-[ext_resource type="Script" path="res://Characters/Players/States/Walk.gd" id="4_7gqas"]
-[ext_resource type="Script" path="res://Characters/Players/States/Jump.gd" id="5_icivo"]
+[ext_resource type="Script" path="res://Characters/Players/Walk.gd" id="4_7gqas"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i0obu"]
 radius = 8.0
@@ -13,10 +11,7 @@ height = 32.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uic0e"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0keen"]
-
 [node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("initialState")]
-collision_layer = 5
 script = ExtResource("1_uo1tk")
 initialState = NodePath("Statemachine/Idle")
 gravity = true
@@ -24,10 +19,9 @@ gravity = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_i0obu")
 
-[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
-zoom = Vector2(5, 5)
-script = ExtResource("2_vkips")
-player = NodePath("..")
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -40)
+zoom = Vector2(4.66, 4.66)
 
 [node name="Statemachine" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("2_imo3g")
@@ -43,24 +37,16 @@ player = NodePath("../..")
 
 [node name="Fall" type="Node" parent="Statemachine"]
 
-[node name="Jump" type="Node" parent="Statemachine" node_paths=PackedStringArray("player")]
-script = ExtResource("5_icivo")
-player = NodePath("../..")
-
 [node name="LeftFoot" type="CollisionShape2D" parent="."]
-position = Vector2(-4, 14.01)
+position = Vector2(-6.5, 14.01)
 scale = Vector2(0.235, 0.235)
 shape = SubResource("RectangleShape2D_uic0e")
 
 [node name="RightFoot" type="CollisionShape2D" parent="."]
-position = Vector2(4, 14.01)
+position = Vector2(6.5, 14.01)
 scale = Vector2(0.235, 0.235)
 shape = SubResource("RectangleShape2D_uic0e")
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-scale = Vector2(0.01, 0.01)
-shape = SubResource("CircleShape2D_0keen")
-
-[connection signal="area_shape_entered" from="Area2D" to="Camera2D" method="_on_area_2d_area_shape_entered"]
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.79
+one_shot = true

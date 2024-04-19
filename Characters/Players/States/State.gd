@@ -4,7 +4,6 @@ class_name State
 signal Transitioned
 
 func _Enter():
-	print("Base State Entered")
 	pass
 
 func _Exit():

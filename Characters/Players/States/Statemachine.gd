@@ -28,6 +28,7 @@ func _On_Child_Transition(state, newStateName):
 		return
 	
 	if !states.get(newStateName.to_lower()):
+		print("nonexistent")
 		return
 	
 	if player.currentState:
@@ -37,6 +38,7 @@ func _On_Child_Transition(state, newStateName):
 	player.currentState = states.get(newStateName.to_lower())
 	
 	player.currentState._Enter()
+	#print(player.currentState.name, " Entered")
 	
 	#states.get(newStateName.to_lower())
 	
