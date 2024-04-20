@@ -11,6 +11,6 @@ func _Update(_delta : float):
 
 func _PhysicsUpdate(_delta : float):
 	#print(player.lastDirectionX)
-	if player.velocity.x * player.inputDirection[0] > 0:
-		player.velocity.x -= player.inputDirection[0] * ((player.walkAcceleration*2.5) * _delta)
-	
+	#if player.velocity.x * player.inputDirection[0] > 0:
+		#player.velocity.x -= player.inputDirection[0] * ((player.walkAcceleration*2.5) * _delta)
+	pass

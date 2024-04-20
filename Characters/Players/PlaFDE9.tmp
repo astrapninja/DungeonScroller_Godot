@@ -40,11 +40,10 @@ position = Vector2(4, 14.01)
 scale = Vector2(0.235, 0.235)
 shape = SubResource("RectangleShape2D_uic0e")
 
-[node name="PlayerCam" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
+[node name="PlayerCam" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
 position_smoothing_speed = 10.0
 script = ExtResource("2_t0sey")
-player = NodePath("..")
 
 [node name="Statemachine" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("2_imo3g")

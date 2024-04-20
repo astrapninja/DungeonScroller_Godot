@@ -1,122 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1yihw11lqmqy"]
+[gd_scene load_steps=3 format=3 uid="uid://b1yihw11lqmqy"]
 
-[ext_resource type="Texture2D" uid="uid://drke22ipceauo" path="res://DungeonScrollerTiles/SpriteSheet1.png" id="1_ljo8o"]
 [ext_resource type="PackedScene" uid="uid://lekydeni4601" path="res://Characters/Players/Player.tscn" id="2_komqi"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h6nuj"]
-resource_name = "floor"
-texture = ExtResource("1_ljo8o")
-0:2/0 = 0
-0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:2/0/physics_layer_0/angular_velocity = 0.0
-0:3/0 = 0
-0:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:3/0/physics_layer_0/angular_velocity = 0.0
-1:3/0 = 0
-1:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:3/0/physics_layer_0/angular_velocity = 0.0
-2:3/0 = 0
-2:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:3/0/physics_layer_0/angular_velocity = 0.0
-3:3/0 = 0
-3:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-3:3/0/physics_layer_0/angular_velocity = 0.0
-4:3/0 = 0
-4:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-4:3/0/physics_layer_0/angular_velocity = 0.0
-4:2/0 = 0
-4:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-4:2/0/physics_layer_0/angular_velocity = 0.0
-5:3/0 = 0
-5:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-5:3/0/physics_layer_0/angular_velocity = 0.0
-6:3/0 = 0
-6:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-6:3/0/physics_layer_0/angular_velocity = 0.0
-7:3/0 = 0
-7:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-7:3/0/physics_layer_0/angular_velocity = 0.0
-8:3/0 = 0
-8:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-8:3/0/physics_layer_0/angular_velocity = 0.0
-9:3/0 = 0
-9:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-9:3/0/physics_layer_0/angular_velocity = 0.0
-1:2/0 = 0
-1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:2/0/physics_layer_0/angular_velocity = 0.0
-2:2/0 = 0
-2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:2/0/physics_layer_0/angular_velocity = 0.0
-3:2/0 = 0
-3:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-3:2/0/physics_layer_0/angular_velocity = 0.0
-5:2/0 = 0
-5:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-5:2/0/physics_layer_0/angular_velocity = 0.0
-6:2/0 = 0
-6:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-6:2/0/physics_layer_0/angular_velocity = 0.0
-7:2/0 = 0
-7:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-7:2/0/physics_layer_0/angular_velocity = 0.0
-8:2/0 = 0
-8:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-8:2/0/physics_layer_0/angular_velocity = 0.0
-9:2/0 = 0
-9:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-9:2/0/physics_layer_0/angular_velocity = 0.0
-10:2/0 = 0
-10:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-10:2/0/physics_layer_0/angular_velocity = 0.0
-11:2/0 = 0
-11:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-11:2/0/physics_layer_0/angular_velocity = 0.0
-11:3/0 = 0
-11:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-11:3/0/physics_layer_0/angular_velocity = 0.0
-10:3/0 = 0
-10:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-10:3/0/physics_layer_0/angular_velocity = 0.0
-
-[sub_resource type="TileSet" id="TileSet_fhh8c"]
-physics_layer_0/collision_layer = 0
-physics_layer_0/collision_mask = 0
-sources/0 = SubResource("TileSetAtlasSource_h6nuj")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_myr4y"]
-size = Vector2(368, 9)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_obr0g"]
-size = Vector2(368, 185)
+[ext_resource type="PackedScene" uid="uid://utjmtrqqy3rr" path="res://DungeonRooms/BaseRoom.tscn" id="2_t2jk4"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="TileMap" type="TileMap" parent="."]
-texture_filter = 1
-tile_set = SubResource("TileSet_fhh8c")
-format = 2
-layer_0/tile_data = PackedInt32Array(0, 0, 2, 65536, 0, 3, 1, 65536, 2, 65537, 65536, 3, 2, 131072, 2, 65538, 131072, 3, 3, 196608, 2, 65539, 196608, 3, 4, 262144, 2, 65540, 262144, 3, 5, 327680, 2, 65541, 327680, 3, 6, 393216, 2, 65542, 393216, 3, 7, 458752, 2, 65543, 458752, 3, 8, 524288, 2, 65544, 524288, 3, 9, 589824, 2, 65545, 589824, 3, 10, 655360, 2, 65546, 655360, 3, 11, 720896, 2, 65547, 720896, 3, 12, 0, 2, 65548, 0, 3, 13, 65536, 2, 65549, 65536, 3, 14, 131072, 2, 65550, 131072, 3, 15, 196608, 2, 65551, 196608, 3, 16, 262144, 2, 65552, 262144, 3, 17, 327680, 2, 65553, 327680, 3, 18, 393216, 2, 65554, 393216, 3, 19, 458752, 2, 65555, 458752, 3, 20, 524288, 2, 65556, 524288, 3, 21, 589824, 2, 65557, 589824, 3, 22, 655360, 2, 65558, 655360, 3)
-
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_komqi")]
-position = Vector2(12, 0)
+position = Vector2(194, 63)
 coyoteTime = 0.25
 fallSpeed = 4900.0
-walkAcceleration = 100.0
+walkAcceleration = 250.0
 walkSpeed = 50.0
 jumpStrength = 100.0
+cameraTweenTime = 0.5
+closeTweenMultiplier = 0.25
 
-[node name="Floor" type="StaticBody2D" parent="."]
-collision_mask = 2
+[node name="Area2D" parent="." instance=ExtResource("2_t2jk4")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2(184, 20.5)
-shape = SubResource("RectangleShape2D_myr4y")
-
-[node name="Area2D" type="Area2D" parent="."]
-collision_mask = 4
-metadata/ID = "Room"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(184, -60.5)
-shape = SubResource("RectangleShape2D_obr0g")
+[node name="Area2D2" parent="." instance=ExtResource("2_t2jk4")]
+position = Vector2(448, 0)

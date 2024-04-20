@@ -17,11 +17,13 @@ var grounded : bool
 @export var sprintSpeed : float
 @export var jumpStrength : float
 
-@export_category("PlaceholderHELP")
-@export var placeholderHELP : String
+@export_category("Camera")
+@export var cameraTweenTime : float
+@export var closeTweenMultiplier : float
 
 var inputDirection : Vector2
 var lastDirectionX : int
+var tempVar : int #TODO: Fix this and change it with something else
 var coyoteTimer : Timer
 
 func _accelerateFall(_delta : float):
@@ -52,6 +54,11 @@ func _isFalling():
 			return false
 	return true
 
+func isPositive(number : int):
+	if number < 0:
+		return -1
+	return 1
+
 func _isWalking():
 	for input in ["left", "right"]:
 		if Input.get_action_strength(input):
@@ -64,10 +71,17 @@ func _physics_process(_delta):
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
 		Input.get_action_strength("down") - Input.get_action_strength("up"))
 	
-	if inputDirection[0] != lastDirectionX:
+	if inputDirection[0] != lastDirectionX and inputDirection[0]:
 		lastDirectionX = inputDirection[0]
 	
-	if _isFalling() and velocity.y < fallSpeed and currentState.name.to_lower() != "Jump":
+	if velocity.x != 0 and currentState.name.to_lower() != "jump":
+		tempVar = isPositive(velocity.x)
+		velocity.x -= tempVar * ((walkAcceleration*0.4) * _delta)
+		if velocity.x * tempVar < 0:
+			velocity.x = 0
+		pass
+	
+	if _isFalling() and velocity.y < fallSpeed:
 		if grounded:
 			_addCoyoteTimer()
 			grounded = false
