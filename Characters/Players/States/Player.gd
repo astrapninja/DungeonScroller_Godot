@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var currentState : State
 @export var initialState : State
 @export var lastState : State
+
 @export_category("Movement")
 @export var coyoteTime : float
 @export var dashCooldown : float
@@ -14,6 +15,7 @@ extends CharacterBody2D
 var grounded : bool
 @export var walkAcceleration : float
 @export var walkSpeed : float
+@export var sprintAcceleration : float
 @export var sprintSpeed : float
 @export var jumpStrength : float
 
@@ -74,12 +76,11 @@ func _physics_process(_delta):
 	if inputDirection[0] != lastDirectionX and inputDirection[0]:
 		lastDirectionX = inputDirection[0]
 	
-	if velocity.x != 0 and currentState.name.to_lower() != "jump":
+	if velocity.x != 0 and currentState.name.to_lower() != "jump" and !_isFalling():
 		tempVar = isPositive(velocity.x)
 		velocity.x -= tempVar * ((walkAcceleration*0.4) * _delta)
 		if velocity.x * tempVar < 0:
 			velocity.x = 0
-		pass
 	
 	if _isFalling() and velocity.y < fallSpeed:
 		if grounded:

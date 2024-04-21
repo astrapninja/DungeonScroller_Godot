@@ -9,7 +9,7 @@ func _Enter():
 
 func _Update(_delta : float):
 	if player.velocity.y >= 0:
-		Transitioned.emit(self, "Idle")# change to fall
+		Transitioned.emit(self, "Fall")# change to fall
 	pass
 
 func _PhysicsUpdate(_delta : float):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://lekydeni4601"]
+[gd_scene load_steps=12 format=3 uid="uid://lekydeni4601"]
 
 [ext_resource type="Script" path="res://Characters/Players/States/Player.gd" id="1_uo1tk"]
 [ext_resource type="Script" path="res://Characters/Players/States/Statemachine.gd" id="2_imo3g"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://Characters/Players/States/Idle.gd" id="3_gmlyl"]
 [ext_resource type="Script" path="res://Characters/Players/States/Walk.gd" id="4_7gqas"]
 [ext_resource type="Script" path="res://Characters/Players/States/Jump.gd" id="5_icivo"]
+[ext_resource type="Script" path="res://Characters/Players/Fall.gd" id="6_ih6du"]
+[ext_resource type="Script" path="res://Characters/Players/States/Sprint.gd" id="7_splrs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0keen"]
 
@@ -19,7 +21,6 @@ height = 32.0
 collision_layer = 5
 script = ExtResource("1_uo1tk")
 initialState = NodePath("Statemachine/Idle")
-gravity = true
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -41,7 +42,7 @@ scale = Vector2(0.235, 0.235)
 shape = SubResource("RectangleShape2D_uic0e")
 
 [node name="PlayerCam" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
-zoom = Vector2(5, 5)
+zoom = Vector2(3, 3)
 position_smoothing_speed = 10.0
 script = ExtResource("2_t0sey")
 player = NodePath("..")
@@ -58,10 +59,16 @@ player = NodePath("../..")
 script = ExtResource("4_7gqas")
 player = NodePath("../..")
 
-[node name="Fall" type="Node" parent="Statemachine"]
+[node name="Fall" type="Node" parent="Statemachine" node_paths=PackedStringArray("player")]
+script = ExtResource("6_ih6du")
+player = NodePath("../..")
 
 [node name="Jump" type="Node" parent="Statemachine" node_paths=PackedStringArray("player")]
 script = ExtResource("5_icivo")
+player = NodePath("../..")
+
+[node name="Sprint" type="Node" parent="Statemachine" node_paths=PackedStringArray("player")]
+script = ExtResource("7_splrs")
 player = NodePath("../..")
 
 [connection signal="area_shape_entered" from="Area2D" to="PlayerCam" method="_on_area_2d_area_shape_entered"]

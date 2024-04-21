@@ -18,7 +18,8 @@ jumpStrength = 100.0
 cameraTweenTime = 0.5
 closeTweenMultiplier = 0.25
 
-[node name="Rooms" type="Node" parent="."]
+[node name="Rooms" type="Node" parent="." node_paths=PackedStringArray("currentRoom")]
 script = ExtResource("2_w44r8")
+currentRoom = NodePath("BaseRoom")
 
 [node name="BaseRoom" parent="Rooms" instance=ExtResource("2_t2jk4")]
