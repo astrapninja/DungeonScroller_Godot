@@ -6,8 +6,10 @@ class_name PlayerIdle
 func _Update(_delta : float):
 	if player._isWalking():
 		Transitioned.emit(self, "Walk")
-	if Input.is_action_just_pressed("jump"):
+	elif Input.is_action_just_pressed("jump"):
 		Transitioned.emit(self, "Jump")
+	elif player.velocity.y >= 0 and !player.is_on_floor():
+		Transitioned.emit(self, "Fall")
 
 func _PhysicsUpdate(_delta : float):
 	#print(player.lastDirectionX)

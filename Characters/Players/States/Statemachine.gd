@@ -28,7 +28,7 @@ func _On_Child_Transition(state, newStateName):
 		return
 	
 	if !states.get(newStateName.to_lower()):
-		print("nonexistent")
+		#print("nonexistent")
 		return
 	
 	if player.currentState:

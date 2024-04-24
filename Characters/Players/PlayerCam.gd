@@ -31,7 +31,9 @@ func _changeLimits(area : Area2D):
 	limit_bottom = area.find_child("Area").global_position.y + area.find_child("Area").shape.size.y/2
 	limit_top = area.find_child("Area").global_position.y - area.find_child("Area").shape.size.y/2
 
-func _on_area_2d_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+func _on_hitbox_comp_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+	if area.name == "HitboxComp" or area.name == "Area2D":
+		return
 	if currentArea != null:
 		if nextArea == null:
 			nextArea = area
@@ -42,13 +44,16 @@ func _on_area_2d_area_shape_entered(area_rid, area, area_shape_index, local_shap
 	limit_smoothed = true
 	position_smoothing_enabled = true
 
-func _on_area_2d_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
+func _on_hitbox_comp_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
+	if area.name == "HitboxComp" or area.name == "Area2D":
+		return
 	if area != currentArea:
 		return
 	
 	if nextArea != null:
 		currentArea = nextArea
 		nextArea = null
+		print(currentArea.name)
 		_tweenLimits(currentArea)
 
 func _physics_process(delta):

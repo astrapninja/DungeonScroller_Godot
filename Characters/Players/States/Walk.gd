@@ -16,6 +16,8 @@ func _Update(_delta : float):
 		Transitioned.emit(self, "Sprint")
 	elif Input.is_action_just_pressed("jump"):
 		Transitioned.emit(self, "Jump")
+	elif player.velocity.y >= 0 and !player.is_on_floor():
+		Transitioned.emit(self, "Fall")
 
 func _PhysicsUpdate(_delta : float):
 	if player.velocity.x * player.inputDirection[0] < player.walkSpeed:
