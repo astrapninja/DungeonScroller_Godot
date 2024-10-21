@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://clbwmk8lbbp6u"]
 
 [ext_resource type="Script" path="res://Characters/NPC/dummy.gd" id="1_7l071"]
-[ext_resource type="PackedScene" uid="uid://ca6pud6dop0oe" path="res://Characters/Modules/HitboxComp.tscn" id="1_hr0nx"]
-[ext_resource type="PackedScene" uid="uid://wlckncbkcvv5" path="res://Characters/Modules/HealthComp.tscn" id="2_86vnw"]
+[ext_resource type="PackedScene" uid="uid://ca6pud6dop0oe" path="res://Scenes/HitboxComp.tscn" id="1_hr0nx"]
+[ext_resource type="PackedScene" uid="uid://wlckncbkcvv5" path="res://Scenes/HealthComp.tscn" id="2_86vnw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7vwuu"]
 radius = 6.0

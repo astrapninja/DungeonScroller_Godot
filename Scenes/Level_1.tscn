@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1yihw11lqmqy"]
+
+[ext_resource type="PackedScene" uid="uid://lekydeni4601" path="res://Scenes/Player.tscn" id="1_ci0a4"]
+[ext_resource type="PackedScene" uid="uid://c2yd0d36wkk62" path="res://Scenes/weapon.tscn" id="2_vv085"]
+[ext_resource type="Script" path="res://Scripts/Rooms.gd" id="3_q14u4"]
+[ext_resource type="PackedScene" uid="uid://utjmtrqqy3rr" path="res://Scenes/BaseRoom.tscn" id="4_b4vep"]
+[ext_resource type="PackedScene" uid="uid://clbwmk8lbbp6u" path="res://Characters/NPC/dummy.tscn" id="5_wwooa"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_ci0a4")]
+position = Vector2(0, 93)
+coyoteTime = 0.1
+fallSpeed = 4900.0
+gravity = true
+walkAcceleration = 250.0
+walkSpeed = 50.0
+sprintAcceleration = 275.0
+sprintSpeed = 125.0
+jumpStrength = 175.0
+maxHealth = 400.0
+
+[node name="weapon" parent="Player" instance=ExtResource("2_vv085")]
+position = Vector2(11, 0)
+
+[node name="Rooms" type="Node" parent="."]
+script = ExtResource("3_q14u4")
+
+[node name="BaseRoom" parent="Rooms" instance=ExtResource("4_b4vep")]
+
+[node name="Dummy" parent="." instance=ExtResource("5_wwooa")]
+position = Vector2(115, 97)

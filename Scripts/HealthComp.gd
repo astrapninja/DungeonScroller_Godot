@@ -13,5 +13,6 @@ func _ready():
 
 func _Damage(attack : Attack):
 	health -= attack.attackDamage
+	print(get_node("..").name, " has taken ", attack.attackDamage, " Damage and has ", health, " remaining.")
 	if health <= 0:
 		get_parent().queue_free()

@@ -1,8 +1,8 @@
 extends Node
 
 var availableRooms : Dictionary = {
-	"baseroom" = [preload("res://DungeonRooms/BaseRoom.tscn"), preload("res://DungeonRooms/StartRoom.tscn")],
-	"startroom" = [preload("res://DungeonRooms/BaseRoom.tscn"), preload("res://DungeonRooms/StartRoom.tscn")]
+	"baseroom" = [preload("res://Scenes/BaseRoom.tscn"), preload("res://Scenes/StartRoom.tscn")],
+	"startroom" = [preload("res://Scenes/BaseRoom.tscn"), preload("res://Scenes/StartRoom.tscn")]
 }
 
 @export var currentRoom : DungeonRoom

@@ -1,13 +1,13 @@
 [gd_scene load_steps=8 format=3 uid="uid://utjmtrqqy3rr"]
 
-[ext_resource type="Script" path="res://DungeonRooms/BaseRoom.gd" id="1_2myd7"]
-[ext_resource type="Texture2D" uid="uid://drke22ipceauo" path="res://DungeonScrollerTiles/SpriteSheet1.png" id="1_tguag"]
+[ext_resource type="Script" path="res://Scripts/BaseRoom.gd" id="1_incic"]
+[ext_resource type="Texture2D" uid="uid://drke22ipceauo" path="res://Assets/Sprites/SpriteSheet1.png" id="2_7fuix"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pilrw"]
 size = Vector2(960, 250)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_njlbk"]
-texture = ExtResource("1_tguag")
+texture = ExtResource("2_7fuix")
 0:2/0 = 0
 1:2/0 = 0
 1:3/0 = 0
@@ -44,7 +44,7 @@ size = Vector2(960, 20)
 
 [node name="BaseRoom" type="Area2D"]
 collision_mask = 4
-script = ExtResource("1_2myd7")
+script = ExtResource("1_incic")
 roomCategory = "BaseRoom"
 
 [node name="Area" type="CollisionShape2D" parent="."]

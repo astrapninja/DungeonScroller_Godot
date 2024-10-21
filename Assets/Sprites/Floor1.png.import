@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvh0qu6xnvqb6"
-path="res://.godot/imported/Floor2.png-834ce894d12fc84bc3db39de87122958.ctex"
+uid="uid://di1lnct6mv4fh"
+path="res://.godot/imported/Floor1.png-c42506152f68ac2e61f3e0227fbd814d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://DungeonScrollerTiles/DungeonTiles/Floor2.png"
-dest_files=["res://.godot/imported/Floor2.png-834ce894d12fc84bc3db39de87122958.ctex"]
+source_file="res://Assets/Sprites/Floor1.png"
+dest_files=["res://.godot/imported/Floor1.png-c42506152f68ac2e61f3e0227fbd814d.ctex"]
 
 [params]
 

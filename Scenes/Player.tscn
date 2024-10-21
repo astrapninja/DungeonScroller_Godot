@@ -1,11 +1,11 @@
 [gd_scene load_steps=16 format=3 uid="uid://lekydeni4601"]
 
-[ext_resource type="Script" path="res://Characters/Players/Player.gd" id="1_1f60j"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_1f60j"]
 [ext_resource type="Script" path="res://Characters/Players/States/Statemachine.gd" id="2_imo3g"]
-[ext_resource type="Script" path="res://Characters/Players/PlayerCam.gd" id="2_t0sey"]
-[ext_resource type="PackedScene" uid="uid://wlckncbkcvv5" path="res://Characters/Modules/HealthComp.tscn" id="2_t40r2"]
+[ext_resource type="Script" path="res://Scripts/PlayerCam.gd" id="2_t0sey"]
+[ext_resource type="PackedScene" uid="uid://wlckncbkcvv5" path="res://Scenes/HealthComp.tscn" id="2_t40r2"]
 [ext_resource type="Script" path="res://Characters/Players/States/Idle.gd" id="3_gmlyl"]
-[ext_resource type="PackedScene" uid="uid://ca6pud6dop0oe" path="res://Characters/Modules/HitboxComp.tscn" id="3_o3jnj"]
+[ext_resource type="PackedScene" uid="uid://ca6pud6dop0oe" path="res://Scenes/HitboxComp.tscn" id="3_o3jnj"]
 [ext_resource type="Script" path="res://Characters/Players/States/Walk.gd" id="4_7gqas"]
 [ext_resource type="Script" path="res://Characters/Players/States/Jump.gd" id="5_icivo"]
 [ext_resource type="Script" path="res://Characters/Players/States/Fall.gd" id="6_dhljp"]
@@ -42,7 +42,8 @@ shape = SubResource("CapsuleShape2D_i0obu")
 
 [node name="PlayerCam" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 zoom = Vector2(3, 3)
-position_smoothing_speed = 10.0
+position_smoothing_enabled = true
+position_smoothing_speed = 7.5
 script = ExtResource("2_t0sey")
 player = NodePath("..")
 
