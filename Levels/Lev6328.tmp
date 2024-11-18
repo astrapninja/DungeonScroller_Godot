@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1yihw11lqmqy"]
+
+[ext_resource type="Script" path="res://Levels/Main.gd" id="1_u50d5"]
+[ext_resource type="PackedScene" uid="uid://lekydeni4601" path="res://Characters/Players/Player.tscn" id="2_komqi"]
+[ext_resource type="PackedScene" uid="uid://utjmtrqqy3rr" path="res://DungeonRooms/BaseRoom.tscn" id="2_t2jk4"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_u50d5")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_komqi")]
+position = Vector2(0, 63)
+coyoteTime = 0.25
+fallSpeed = 4900.0
+gravity = true
+walkAcceleration = 250.0
+walkSpeed = 50.0
+sprintAcceleration = 350.0
+sprintSpeed = 200.0
+jumpStrength = 100.0
+cameraTweenTime = 0.5
+closeTweenMultiplier = 0.25
+
+[node name="Area2D" parent="." instance=ExtResource("2_t2jk4")]
+
+[node name="Area2D2" parent="." instance=ExtResource("2_t2jk4")]
+position = Vector2(960, 0)
+
+[node name="Rooms" type="Node" parent="."]

@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://clbwmk8lbbp6u"]
+
+[ext_resource type="Script" path="res://Characters/NPC/dummy.gd" id="1_7l071"]
+[ext_resource type="PackedScene" uid="uid://ca6pud6dop0oe" path="res://Characters/Modules/HitboxComp.tscn" id="1_hr0nx"]
+[ext_resource type="PackedScene" uid="uid://wlckncbkcvv5" path="res://Characters/Modules/HealthComp.tscn" id="2_86vnw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7vwuu"]
+radius = 6.0
+height = 28.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1yxfq"]
+
+[node name="Dummy" type="CharacterBody2D"]
+script = ExtResource("1_7l071")
+maxHealth = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_7vwuu")
+
+[node name="HitboxComp" parent="." instance=ExtResource("1_hr0nx")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComp"]
+shape = SubResource("CapsuleShape2D_1yxfq")
+
+[node name="HealthComp" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("2_86vnw")]
+entity = NodePath("..")

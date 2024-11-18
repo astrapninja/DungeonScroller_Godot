@@ -1,0 +1,75 @@
+[gd_scene load_steps=12 format=3 uid="uid://lekydeni4601"]
+
+[ext_resource type="Script" path="res://Characters/Players/States/Player.gd" id="1_uo1tk"]
+[ext_resource type="Script" path="res://Characters/Players/States/Statemachine.gd" id="2_imo3g"]
+[ext_resource type="Script" path="res://Characters/Players/PlayerCam.gd" id="2_t0sey"]
+[ext_resource type="Script" path="res://Characters/Players/States/Idle.gd" id="3_gmlyl"]
+[ext_resource type="Script" path="res://Characters/Players/States/Walk.gd" id="4_7gqas"]
+[ext_resource type="Script" path="res://Characters/Players/States/Jump.gd" id="5_icivo"]
+[ext_resource type="Script" path="res://Characters/Players/Fall.gd" id="6_ih6du"]
+[ext_resource type="Script" path="res://Characters/Players/States/Sprint.gd" id="7_splrs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0keen"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i0obu"]
+radius = 8.0
+height = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uic0e"]
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("initialState")]
+collision_layer = 5
+script = ExtResource("1_uo1tk")
+initialState = NodePath("Statemachine/Idle")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(0.549369, 0.0210677)
+shape = SubResource("CircleShape2D_0keen")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_i0obu")
+
+[node name="LeftFoot" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 14.01)
+scale = Vector2(0.235, 0.235)
+shape = SubResource("RectangleShape2D_uic0e")
+
+[node name="RightFoot" type="CollisionShape2D" parent="."]
+position = Vector2(4, 14.01)
+scale = Vector2(0.235, 0.235)
+shape = SubResource("RectangleShape2D_uic0e")
+
+[node name="PlayerCam" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
+zoom = Vector2(3, 3)
+position_smoothing_speed = 10.0
+script = ExtResource("2_t0sey")
+player = NodePath("..")
+
+[node name="Statemachine" type="Node" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("2_imo3g")
+player = NodePath("..")
+
+[node name="Idle" type="Node" parent="Statemachine" node_paths=PackedStringArray("player")]
+script = ExtResource("3_gmlyl")
+player = NodePath("../..")
+
+[node name="Walk" type="Node" parent="Statemachine" node_paths=PackedStringArray("player")]
+script = ExtResource("4_7gqas")
+player = NodePath("../..")
+
+[node name="Fall" type="Node" parent="Statemachine" node_paths=PackedStringArray("player")]
+script = ExtResource("6_ih6du")
+player = NodePath("../..")
+
+[node name="Jump" type="Node" parent="Statemachine" node_paths=PackedStringArray("player")]
+script = ExtResource("5_icivo")
+player = NodePath("../..")
+
+[node name="Sprint" type="Node" parent="Statemachine" node_paths=PackedStringArray("player")]
+script = ExtResource("7_splrs")
+player = NodePath("../..")
+
+[connection signal="area_shape_entered" from="Area2D" to="PlayerCam" method="_on_area_2d_area_shape_entered"]
+[connection signal="area_shape_exited" from="Area2D" to="PlayerCam" method="_on_area_2d_area_shape_exited"]

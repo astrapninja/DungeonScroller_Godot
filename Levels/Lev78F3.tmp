@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1yihw11lqmqy"]
+
+[ext_resource type="Script" path="res://Levels/Main.gd" id="1_u50d5"]
+[ext_resource type="PackedScene" uid="uid://lekydeni4601" path="res://Characters/Players/Player.tscn" id="2_komqi"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_u50d5")
+
+[node name="Player" parent="." instance=ExtResource("2_komqi")]
+coyoteTime = 0.25
+fallSpeed = 4900.0
+walkAcceleration = 250.0
+walkSpeed = 50.0
+sprintAcceleration = 350.0
+sprintSpeed = 200.0
+jumpStrength = 100.0
+cameraTweenTime = 0.5
+closeTweenMultiplier = 0.25
+
+[node name="Rooms" type="Node" parent="."]

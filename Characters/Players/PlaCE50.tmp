@@ -1,18 +1,17 @@
-[gd_scene load_steps=16 format=3 uid="uid://lekydeni4601"]
+[gd_scene load_steps=15 format=3 uid="uid://lekydeni4601"]
 
 [ext_resource type="Script" path="res://Characters/Players/Player.gd" id="1_1f60j"]
 [ext_resource type="Script" path="res://Characters/Players/States/Statemachine.gd" id="2_imo3g"]
 [ext_resource type="Script" path="res://Characters/Players/PlayerCam.gd" id="2_t0sey"]
-[ext_resource type="PackedScene" uid="uid://wlckncbkcvv5" path="res://Characters/Modules/HealthComp.tscn" id="2_t40r2"]
+[ext_resource type="PackedScene" uid="uid://wlckncbkcvv5" path="res://Characters/HealthComp.tscn" id="3_806i0"]
 [ext_resource type="Script" path="res://Characters/Players/States/Idle.gd" id="3_gmlyl"]
-[ext_resource type="PackedScene" uid="uid://ca6pud6dop0oe" path="res://Characters/Modules/HitboxComp.tscn" id="3_o3jnj"]
 [ext_resource type="Script" path="res://Characters/Players/States/Walk.gd" id="4_7gqas"]
+[ext_resource type="PackedScene" uid="uid://ca6pud6dop0oe" path="res://Characters/HitboxComp.tscn" id="5_0s7rl"]
 [ext_resource type="Script" path="res://Characters/Players/States/Jump.gd" id="5_icivo"]
 [ext_resource type="Script" path="res://Characters/Players/States/Fall.gd" id="6_dhljp"]
 [ext_resource type="Script" path="res://Characters/Players/States/Sprint.gd" id="7_splrs"]
-[ext_resource type="Script" path="res://Characters/Players/Actions/ActionManager.gd" id="11_2rbkx"]
-[ext_resource type="Script" path="res://Characters/Players/Actions/Action.gd" id="12_fsnr1"]
-[ext_resource type="Script" path="res://Characters/Players/Actions/WeaponFire.gd" id="13_pu4fu"]
+[ext_resource type="Script" path="res://Characters/Players/Actions.gd" id="9_p1f3s"]
+[ext_resource type="Script" path="res://Characters/Players/Node.gd" id="10_3pflj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x0qk0"]
 radius = 5.0
@@ -26,13 +25,25 @@ height = 24.0
 collision_layer = 5
 script = ExtResource("1_1f60j")
 initialState = NodePath("Statemachine/Idle")
+coyoteTime = null
+dashCooldown = null
+dashSpeed = null
+dashTime = null
+fallSpeed = null
+gravity = null
+walkAcceleration = null
+walkSpeed = null
+sprintAcceleration = null
+sprintSpeed = null
+jumpStrength = null
+cameraTweenTime = null
+closeTweenMultiplier = null
+maxHealth = null
 
-[node name="HealthComp" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("2_t40r2")]
+[node name="HealthComp" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("3_806i0")]
 entity = NodePath("..")
 
-[node name="HitboxComp" parent="." instance=ExtResource("3_o3jnj")]
-collision_layer = 2049
-collision_mask = 2049
+[node name="HitboxComp" parent="." instance=ExtResource("5_0s7rl")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComp"]
 shape = SubResource("CapsuleShape2D_x0qk0")
@@ -71,14 +82,11 @@ script = ExtResource("6_dhljp")
 player = NodePath("../..")
 
 [node name="Actionsmanager" type="Node" parent="." node_paths=PackedStringArray("entity")]
-script = ExtResource("11_2rbkx")
+script = ExtResource("9_p1f3s")
 entity = NodePath("..")
 
 [node name="Node" type="Node" parent="Actionsmanager"]
-script = ExtResource("12_fsnr1")
-
-[node name="WeaponFire" type="Node" parent="Actionsmanager"]
-script = ExtResource("13_pu4fu")
+script = ExtResource("10_3pflj")
 
 [connection signal="area_shape_entered" from="HitboxComp" to="PlayerCam" method="_on_hitbox_comp_area_shape_entered"]
 [connection signal="area_shape_exited" from="HitboxComp" to="PlayerCam" method="_on_hitbox_comp_area_shape_exited"]
